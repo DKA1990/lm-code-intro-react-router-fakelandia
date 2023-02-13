@@ -1,14 +1,14 @@
-import Router from "./router";
-import Navigation from "./navigation-bar";
+import { Outlet } from "react-router-dom";
+import Header from "./header";
 
 const MainLayout: React.FC = () => {
 
 
     return (
         <>  
-            <Navigation/>
+            <Header />
             <section>
-                <Router />
+                <Outlet />    
             </section>
         </>
     )
