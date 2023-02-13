@@ -7,7 +7,7 @@ const MainLayout: React.FC = () => {
     return (
         <>  
             <Header />
-            <section>
+            <section className="main-container">
                 <Outlet />    
             </section>
         </>
