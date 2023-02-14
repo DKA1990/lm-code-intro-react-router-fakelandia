@@ -5,7 +5,7 @@ import Misdemeanours from './misdemeanours';
 import Confess from './confess';
 import Missing from './missing-page';
 
-const Router: React.FC = () => (
+const Router: React.FC= () => (
     <Routes>
         <Route path="/" element={<MainLayout/>}>
             <Route index element={<Home/>}/>

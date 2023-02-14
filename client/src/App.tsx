@@ -1,19 +1,34 @@
-import { useState } from 'react';
+import { useEffect, useState, createContext } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import './App.css';
 import Router from './components/router';
+import './App.css';
+import { Misdemeanour } from '../types/misdemeanours.type'
 
-function App() {
-    const [count, setCount] = useState(0)
+export const MisdemeanourContext = createContext<Misdemeanour[]>([]);
+
+const App : React.FC = () => {
+    const [misdemeanours, setMisdemeanours] = useState<Array<Misdemeanour>>([]);
+
+    const getMisdemeanours = async (amount: number) => {
+        const apiResponse = await fetch(`http://localhost:8080/api/misdemeanours/${amount}`);
+        const json = await apiResponse.json() as { misdemeanours: Array<Misdemeanour> };
+        setMisdemeanours(json.misdemeanours);
+    }
+
+    useEffect(() => {
+        getMisdemeanours(20);
+    }, []);
 
     return (
-        <div className="App">
-            <>
-                <BrowserRouter>
-                    <Router/>
-                </BrowserRouter>
-            </>
-        </div>
+        <MisdemeanourContext.Provider value={misdemeanours}>
+            <div className="App">
+                <>
+                    <BrowserRouter>
+                        <Router/>
+                    </BrowserRouter>
+                </>
+            </div>
+        </MisdemeanourContext.Provider>
     )
 }
 
