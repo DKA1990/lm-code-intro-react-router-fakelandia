@@ -3,11 +3,14 @@ import { BrowserRouter } from 'react-router-dom';
 import Router from './components/router';
 import './App.css';
 import { Misdemeanour } from '../types/misdemeanours.type'
+import { Confession } from '../types/confess.type'
 
 export const MisdemeanourContext = createContext<Misdemeanour[]>([]);
+export const ConfessionContext = createContext<Confession[]>([]);
 
 const App : React.FC = () => {
     const [misdemeanours, setMisdemeanours] = useState<Array<Misdemeanour>>([]);
+    const [confessions, setConfessions] = useState<Array<Confession>>([]);
 
     const getMisdemeanours = async (amount: number) => {
         const apiResponse = await fetch(`http://localhost:8080/api/misdemeanours/${amount}`);
@@ -23,13 +26,15 @@ const App : React.FC = () => {
 
     return (
         <MisdemeanourContext.Provider value={misdemeanours}>
-            <div className="App">
-                <>
-                    <BrowserRouter>
-                        <Router/>
-                    </BrowserRouter>
-                </>
-            </div>
+            <ConfessionContext.Provider value={confessions}>
+                <div className="App">
+                    <>
+                        <BrowserRouter>
+                            <Router/>
+                        </BrowserRouter>
+                    </>
+                </div>
+            </ConfessionContext.Provider>
         </MisdemeanourContext.Provider>
     )
 }

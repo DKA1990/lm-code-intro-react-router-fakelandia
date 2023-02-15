@@ -12,7 +12,7 @@ const Misdemeanours: React.FC = () => {
     }
 
     return (
-        <div>
+        <section className="main misdemeanours">
             <select 
                 className="misdemeanour-select"                                
                 onChange={(e) => {
@@ -28,7 +28,7 @@ const Misdemeanours: React.FC = () => {
                     <option value="united">Supporting Manchester United</option>
             </select>
             <MisdemeanoursContainer misFilter={misdemeanourFilter}/>
-        </div>
+        </section>
     );
 };
 
