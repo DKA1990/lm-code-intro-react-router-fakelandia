@@ -1,28 +1,46 @@
-import { useContext } from "react";
+import { useState } from "react";
 import { MisdemeanourKind } from "../../types/misdemeanours.type";
-import { MisdemeanourContext } from "../App";
-import MisdemeanourCard from "./misdemeanour-card";
+import MisdemeanoursContainer from "./misdemeanour-container";
 
 const Misdemeanours: React.FC = () => {
 
-    const misdemeanours = useContext(MisdemeanourContext)
+    const [misdemeanourFilter, setMisdemeanourFilter] = useState<MisdemeanourKind | "undefined">("undefined");
 
     // Optional type. If found filter, if not display all
-    const createMisdemeanours = ( type? : MisdemeanourKind) => {
+    /*const createMisdemeanours = ( type : MisdemeanourKind | "undefined") => {
+        console.log('bleh');
         let misdemeanourCardArr : Array<JSX.Element> = [];
 
-        misdemeanours.forEach(misdemeanour => {
-            misdemeanourCardArr.push(<MisdemeanourCard misdemeanour={misdemeanour}/>);
+        misdemeanours.forEach((misdemeanour, index) => {
+            misdemeanourCardArr.push(<MisdemeanourCard misdemeanour={misdemeanour} randomSrc={index}/>);
         })
         
         return misdemeanourCardArr;
     }
 
-    console.log(misdemeanours);
+    console.log(misdemeanours);*/
+
+    function isMisdemeanourKind(mis: string) : mis is MisdemeanourKind | "undefined" {
+        return (["rudeness", "vegetables", "lift", "united", "undefined"].includes(mis));
+    }
 
     return (
         <div>
-            {createMisdemeanours()}
+            <select 
+                className="misdemeanour-select"                                
+                onChange={(e) => {
+                    console.log(e.target.value);
+                    if (isMisdemeanourKind(e.target.value)) {
+                        setMisdemeanourFilter(e.target.value);
+                    }
+                }}>
+                    <option value="undefined">No filter</option>
+                    <option value="rudeness">Mild Public Rudeness</option>
+                    <option value="vegetables">Not Eating Vegetables</option>
+                    <option value="lift">Speaking in a Lift</option>
+                    <option value="united">Supporting Manchester United</option>
+            </select>
+            <MisdemeanoursContainer misFilter={misdemeanourFilter}/>
         </div>
     );
 };

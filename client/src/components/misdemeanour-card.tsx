@@ -1,13 +1,19 @@
 import { Misdemeanour } from "../../types/misdemeanours.type";
 
-const MisdemeanourCard : React.FC<{ misdemeanour: Misdemeanour }> = ({ misdemeanour }) => {
+interface MisdemeanourCardProps {
+    misdemeanour: Misdemeanour,
+    randomSrc: number
+}
+
+const MisdemeanourCard : React.FC<MisdemeanourCardProps> = ({ misdemeanour, randomSrc }) => {
+    const source = `https://picsum.photos/100/100?${randomSrc}`;
     
     return (
         <section className="misdemeanour-card">
             <div className="misdemeanour-card__citizen misdemeanour-card__text">{misdemeanour.citizenId}</div>
             <div className="misdemeanour-card__date misdemeanour-card__text">{misdemeanour.date}</div>
             <div className="misdemeanour-card__misdemeanour misdemeanour-card__text">{misdemeanour.misdemeanour}</div>
-            <img src='https://picsum.photos/100/100' />;
+            <img className="misdemeanour-card__image" src={source} />
         </section>
     )
 }
