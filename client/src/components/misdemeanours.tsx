@@ -4,21 +4,8 @@ import MisdemeanoursContainer from "./misdemeanour-container";
 
 const Misdemeanours: React.FC = () => {
 
+    // Undefined is intentionally a string here. Returned value from <select> is always a string.
     const [misdemeanourFilter, setMisdemeanourFilter] = useState<MisdemeanourKind | "undefined">("undefined");
-
-    // Optional type. If found filter, if not display all
-    /*const createMisdemeanours = ( type : MisdemeanourKind | "undefined") => {
-        console.log('bleh');
-        let misdemeanourCardArr : Array<JSX.Element> = [];
-
-        misdemeanours.forEach((misdemeanour, index) => {
-            misdemeanourCardArr.push(<MisdemeanourCard misdemeanour={misdemeanour} randomSrc={index}/>);
-        })
-        
-        return misdemeanourCardArr;
-    }
-
-    console.log(misdemeanours);*/
 
     function isMisdemeanourKind(mis: string) : mis is MisdemeanourKind | "undefined" {
         return (["rudeness", "vegetables", "lift", "united", "undefined"].includes(mis));

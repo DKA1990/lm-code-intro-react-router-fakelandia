@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { MisdemeanourKind } from "../../types/misdemeanours.type";
 import { MisdemeanourContext } from "../App";
 import MisdemeanourCard from "./misdemeanour-card";
@@ -17,12 +17,12 @@ const MisdemeanoursContainer: React.FC<MisdemeanourContainerProps> = ({ misFilte
         let misdemeanourCardArr : Array<JSX.Element> = [];
 
         if (misFilter === "undefined") {
-            misdemeanours.forEach((misdemeanour, index) => {
-                misdemeanourCardArr.push(<MisdemeanourCard misdemeanour={misdemeanour} randomSrc={index}/>);
+            misdemeanours.forEach(misdemeanour => {
+                misdemeanourCardArr.push(<MisdemeanourCard misdemeanour={misdemeanour}/>);
             })
         } else {
             misdemeanours.filter(misdemeanour => misdemeanour.misdemeanour === misFilter).forEach((misdemeanour, index) => {
-                misdemeanourCardArr.push(<MisdemeanourCard misdemeanour={misdemeanour} randomSrc={index}/>);
+                misdemeanourCardArr.push(<MisdemeanourCard misdemeanour={misdemeanour}/>);
             })
         }
         

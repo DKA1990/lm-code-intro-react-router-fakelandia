@@ -12,6 +12,8 @@ const App : React.FC = () => {
     const getMisdemeanours = async (amount: number) => {
         const apiResponse = await fetch(`http://localhost:8080/api/misdemeanours/${amount}`);
         const json = await apiResponse.json() as { misdemeanours: Array<Misdemeanour> };
+        // Save punishment image for each misdemeanour
+        json.misdemeanours.forEach((misdemeanour, index) => misdemeanour.punishment = `https://picsum.photos/100/100?${index}`);
         setMisdemeanours(json.misdemeanours);
     }
 
