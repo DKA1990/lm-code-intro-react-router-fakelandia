@@ -10,7 +10,7 @@ const MisdemeanourCard : React.FC<MisdemeanourCardProps> = ({ misdemeanour }) =>
             <div className="misdemeanour-card__citizen misdemeanour-card__text">{misdemeanour.citizenId}</div>
             <div className="misdemeanour-card__date misdemeanour-card__text">{misdemeanour.date}</div>
             <div className="misdemeanour-card__misdemeanour misdemeanour-card__text">{misdemeanour.misdemeanour}</div>
-            <img className="misdemeanour-card__image" src={misdemeanour.punishment} />
+            <img className="misdemeanour-card__image misdemeanour-card__text" src={misdemeanour.punishment} />
         </section>
     )
 }
