@@ -3,6 +3,7 @@ import { ConfessionContext } from "../App";
 import ConfessSubject from "./confess-subject";
 import { validateSubject, validateDetails } from "../validation";
 import ConfessDetails from "./confess-details";
+import ConfessReason from "./confess-reason";
 
 export const ValidSubject = createContext(false);
 export const ValidDetails = createContext(false);
@@ -19,19 +20,16 @@ const Confess: React.FC = () => {
     const [details, setDetails] = useState('');
     const [detailsValid, setDetailsValid] = useState(false);
 
+    const [reason, setReason] = useState('rudeness');
+
     const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        // POST HERE?
     }
 
-    // useEffect needed here because setState is asynchronus?
+    // useEffect needed here because validity states not updated instantly
     useEffect(() => 
         disableButton(!subjectValid || !detailsValid)
-    ), [subjectValid];
-
-    useEffect(() => 
-        disableButton(!subjectValid || !detailsValid)
-    ), [detailsValid];
+    ), [subjectValid, detailsValid];
 
     return (
         <section className="main confess">
@@ -48,14 +46,12 @@ const Confess: React.FC = () => {
                     performValidation={validateSubject}
                     setValid={setSubjectValid}
                 />
-                <label className="confess__reason-label" htmlFor="reason">Reason for contact: </label>
-                <select className="confess__reason-select" id="reason">
-                    <option value="rudeness">Mild Public Rudeness</option>
-                    <option value="vegetables">Not Eating Vegetables</option>
-                    <option value="lift">Speaking in a Lift</option>
-                    <option value="united">Supporting Manchester United</option>
-                    <option value="talk">Just want to Talk</option>
-                </select>    
+                <ConfessReason 
+                    reason={reason}
+                    changeReason={(event: any) => {
+                        setReason(event?.target.value)
+                    }}
+                />   
                 <ConfessDetails 
                     details={details}
                     changeDetailsValue={(event: any) => {
@@ -68,7 +64,7 @@ const Confess: React.FC = () => {
                     className="confess__submit-button" 
                     type="submit" 
                     id="submit"
-                    disabled={buttonDisabled}>Submit                    
+                    disabled={buttonDisabled}>Confess                    
                 </button>
             </form>
         </section>
