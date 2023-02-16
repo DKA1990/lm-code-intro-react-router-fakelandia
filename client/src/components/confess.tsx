@@ -1,14 +1,19 @@
-import { useState, useContext, createContext, useEffect } from "react";
+import { useState, useContext, useEffect } from "react";
 import { ConfessionContext } from "../App";
 import ConfessSubject from "./confess-subject";
 import { validateSubject, validateDetails } from "../validation";
 import ConfessDetails from "./confess-details";
 import ConfessReason from "./confess-reason";
+import post from "../post-server";
+import { MisdemeanourKind } from "../../types/misdemeanours.type";
+import ErrorMessage from "./error-message";
+import { Confession } from "../../types/confess.type";
 
-export const ValidSubject = createContext(false);
-export const ValidDetails = createContext(false);
+interface ConfessProps {
+    updateConfessions: (confessions: Array<Confession>) => void;
+}
 
-const Confess: React.FC = () => {
+const Confess: React.FC<ConfessProps> = ({ updateConfessions }) => {
 
     const confessions = useContext(ConfessionContext);
 
@@ -20,10 +25,17 @@ const Confess: React.FC = () => {
     const [details, setDetails] = useState('');
     const [detailsValid, setDetailsValid] = useState(false);
 
-    const [reason, setReason] = useState('rudeness');
+    const [reason, setReason] = useState<MisdemeanourKind | "just-talk">('rudeness');
 
-    const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
+    const [ errorMessage, setErrorMessage ] = useState<string | undefined>();
+
+    const submitForm = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        const newConfession: Confession = { subject: subject, reason: reason, details: details };
+        setErrorMessage(await post(newConfession));
+        if (errorMessage === "Confession received.") {
+            updateConfessions([...confessions, newConfession]);
+        }
     }
 
     // useEffect needed here because validity states not updated instantly
@@ -66,6 +78,7 @@ const Confess: React.FC = () => {
                     id="submit"
                     disabled={buttonDisabled}>Confess                    
                 </button>
+                <ErrorMessage errorText={errorMessage}/>
             </form>
         </section>
     )

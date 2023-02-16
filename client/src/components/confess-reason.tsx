@@ -20,7 +20,7 @@ const ConfessReason : React.FC<ConfessReasonProps> = ({ reason, changeReason }) 
                         <option value="vegetables">Not Eating Vegetables</option>
                         <option value="lift">Speaking in a Lift</option>
                         <option value="united">Supporting Manchester United</option>
-                        <option value="talk">Just want to Talk</option>
+                        <option value="just-talk">Just want to Talk</option>
                 </select> 
         </>
     )
