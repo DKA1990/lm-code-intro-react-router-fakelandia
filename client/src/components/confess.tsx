@@ -9,7 +9,7 @@ import { MisdemeanourKind } from "../../types/misdemeanours.type";
 import ErrorMessage from "./error-message";
 import { Confession } from "../../types/confess.type";
 
-interface ConfessProps {
+export interface ConfessProps {
     updateConfessions: (confessions: Array<Confession>) => void;
 }
 
@@ -33,7 +33,7 @@ const Confess: React.FC<ConfessProps> = ({ updateConfessions }) => {
         event.preventDefault();
         const newConfession: Confession = { subject: subject, reason: reason, details: details };
         setErrorMessage(await post(newConfession));
-        if (errorMessage === "Confession received.") {
+        if (errorMessage === "Confession received." && newConfession.reason !== "just-talk") {
             updateConfessions([...confessions, newConfession]);
         }
     }
