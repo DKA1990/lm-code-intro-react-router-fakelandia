@@ -1,21 +1,23 @@
-import { useState, useContext, useEffect } from "react";
-import { ConfessionContext } from "../App";
+import React, { useState, useContext, useEffect, useRef } from "react";
+import { ConfessionContext, MisdemeanourContext } from "../App";
 import ConfessSubject from "./confess-subject";
 import { validateSubject, validateDetails } from "../validation";
 import ConfessDetails from "./confess-details";
 import ConfessReason from "./confess-reason";
 import post from "../post-server";
-import { MisdemeanourKind } from "../../types/misdemeanours.type";
+import { Misdemeanour, MisdemeanourKind } from "../../types/misdemeanours.type";
 import ErrorMessage from "./error-message";
 import { Confession } from "../../types/confess.type";
 
 export interface ConfessProps {
     updateConfessions: (confessions: Array<Confession>) => void;
+    updateMisdemeanours: (misdemeanours: Array<Misdemeanour>) => void;
 }
 
-const Confess: React.FC<ConfessProps> = ({ updateConfessions }) => {
+const Confess: React.FC<ConfessProps> = ({ updateConfessions, updateMisdemeanours }) => {
 
     const confessions = useContext(ConfessionContext);
+    const misdemeanours = useContext(MisdemeanourContext);
 
     const [buttonDisabled, disableButton] = useState(true);
     
@@ -32,9 +34,14 @@ const Confess: React.FC<ConfessProps> = ({ updateConfessions }) => {
     const submitForm = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const newConfession: Confession = { subject: subject, reason: reason, details: details };
-        setErrorMessage(await post(newConfession));
-        if (errorMessage === "Confession received." && newConfession.reason !== "just-talk") {
+        const serverResponse: {success: boolean, message: string} = (await post(newConfession));
+        setErrorMessage(serverResponse.message);
+        if (serverResponse.success === true) {
             updateConfessions([...confessions, newConfession]);
+            if (newConfession.reason !== "just-talk") { 
+                const today = new Date().toLocaleDateString();
+                updateMisdemeanours([...misdemeanours, {citizenId: 1, misdemeanour: newConfession.reason, date: `${today}`, punishment: `https://picsum.photos/100/100?${misdemeanours.length}`}]);
+            }
         }
     }
 

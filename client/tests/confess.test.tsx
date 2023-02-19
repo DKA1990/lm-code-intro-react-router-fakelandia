@@ -1,9 +1,10 @@
 import { render } from '@testing-library/react';
 import { vi } from 'vitest';
-import Confess, { ConfessProps } from './confess';
+import Confess, { ConfessProps } from '../src/components/confess';
 
 const requiredProps : ConfessProps = {
-    updateConfessions: vi.fn
+    updateConfessions: vi.fn,
+    updateMisdemeanours: vi.fn
 }
 
 test('renders form element', () => {	

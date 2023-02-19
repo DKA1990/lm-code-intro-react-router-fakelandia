@@ -5,17 +5,24 @@ import Misdemeanours from './misdemeanours';
 import Confess from './confess';
 import Missing from './missing-page';
 import { Confession } from '../../types/confess.type';
+import { Misdemeanour } from '../../types/misdemeanours.type';
 
 interface RouterProps {
     updateConfessions: (confessions: Array<Confession>) => void;
+    updateMisdemeanours: (misdemeanours: Array<Misdemeanour>) => void;
 }
 
-const Router: React.FC<RouterProps> = ({ updateConfessions }) => (
+const Router: React.FC<RouterProps> = ({ updateConfessions, updateMisdemeanours }) => (
     <Routes>
         <Route path="/" element={<MainLayout/>}>
             <Route index element={<Home/>}/>
             <Route path="/misdemeanours" element={<Misdemeanours/>}/>
-            <Route path="/confess" element={<Confess updateConfessions={updateConfessions}/>}/>
+            <Route path="/confess" 
+                element={<Confess 
+                    updateConfessions={updateConfessions} 
+                    updateMisdemeanours={updateMisdemeanours}
+                />}
+            />
             <Route path="*" element={<Missing/>}/>
         </Route>
     </Routes>

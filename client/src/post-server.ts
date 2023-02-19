@@ -15,7 +15,7 @@ async function post(confession : Confession) {
 
     const json = await apiResponse.json();
     
-    return json.message;
+    return json;
 }
 
 export default post;

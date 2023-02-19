@@ -30,7 +30,7 @@ const App : React.FC = () => {
                 <div className="App">
                     <>
                         <BrowserRouter>
-                            <Router updateConfessions={setConfessions}/>
+                            <Router updateConfessions={setConfessions} updateMisdemeanours={setMisdemeanours}/>
                         </BrowserRouter>
                     </>
                 </div>
