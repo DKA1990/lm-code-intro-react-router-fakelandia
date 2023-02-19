@@ -3,7 +3,7 @@ import { MisdemeanourKind } from "../../types/misdemeanours.type";
 import { MisdemeanourContext } from "../App";
 import MisdemeanourCard from "./misdemeanour-card";
 
-interface MisdemeanourContainerProps {
+export interface MisdemeanourContainerProps {
     misFilter: MisdemeanourKind | "undefined"
 }
 
@@ -32,7 +32,7 @@ const MisdemeanoursContainer: React.FC<MisdemeanourContainerProps> = ({ misFilte
     console.log(misdemeanours);
 
     return (
-        <div className="misdemeanout-container">
+        <div className="misdemeanour-container">
             {createMisdemeanours(misFilter)}
         </div>
     );

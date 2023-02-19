@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import { vi } from 'vitest';
-import ConfessSubject, { ConfessSubjectProps } from './confess-subject';
+import ConfessSubject, { ConfessSubjectProps } from '../src/components/confess-subject';
 
 const requiredProps : ConfessSubjectProps = {
     subject: "",

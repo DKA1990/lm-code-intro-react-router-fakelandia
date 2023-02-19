@@ -1,6 +1,6 @@
 import { Misdemeanour } from "../../types/misdemeanours.type";
 
-interface MisdemeanourCardProps {
+export interface MisdemeanourCardProps {
     misdemeanour: Misdemeanour
 }
 

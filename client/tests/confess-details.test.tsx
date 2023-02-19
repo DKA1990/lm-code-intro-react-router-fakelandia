@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import { vi } from 'vitest';
-import ConfessDetails, { ConfessDetailsProps } from './confess-details';
+import ConfessDetails, { ConfessDetailsProps } from '../src/components/confess-details';
 
 const requiredProps : ConfessDetailsProps = {
     details: "",
