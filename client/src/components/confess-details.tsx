@@ -13,7 +13,7 @@ const ConfessDetails : React.FC<ConfessDetailsProps> = ({ details, changeDetails
     const [ errorMessage, setErrorMessage ] = useState<string | undefined>();
 
     return (
-        <div className="confess__details">
+        <div className="confess__element confess__details">
             <textarea 
                 className="confess__details-text"
                 id="details"

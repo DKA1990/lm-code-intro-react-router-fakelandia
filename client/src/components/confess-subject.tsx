@@ -13,12 +13,13 @@ const ConfessSubject : React.FC<ConfessSubjectProps> = ({ subject, changeSubject
     const [ errorMessage, setErrorMessage ] = useState<string | undefined>();
 
     return (
-        <div className="confess__subject">
+        <div className="confess__element confess__subject">
             <label className="confess__subject-label" htmlFor="subject">Subject: </label> 
             <input 
                 className="confess__subject-text"
                 type="text"
                 id="subject"
+                aria-label="subject"
                 value={subject}
                 onChange={async (e) => {
                     const errorMessage = performValidation(e.target.value);

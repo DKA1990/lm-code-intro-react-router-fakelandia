@@ -1,7 +1,9 @@
-import { render } from '@testing-library/react';
-import Home from '../src/components/home';
+import { render, screen } from '@testing-library/react';
+import App from '../src/App';
 
+// Renders app to avoid "useRoutes() may be used only in the context of a <Router> component" error
 test('renders form element', () => {	
-    const { container } = render(<Home/>);
-	expect(container.firstChild).toHaveClass('home');
+    render(<App/>);
+    const headerText = screen.getByText(/Welcome/g)
+	expect(headerText).toBeInTheDocument();
 });

@@ -7,7 +7,7 @@ import Missing from './missing-page';
 import { Confession } from '../../types/confess.type';
 import { Misdemeanour } from '../../types/misdemeanours.type';
 
-interface RouterProps {
+export interface RouterProps {
     updateConfessions: (confessions: Array<Confession>) => void;
     updateMisdemeanours: (misdemeanours: Array<Misdemeanour>) => void;
 }

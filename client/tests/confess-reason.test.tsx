@@ -9,5 +9,5 @@ const requiredProps : ConfessReasonProps = {
 
 test('renders form element', () => {	
     const { container } = render(<ConfessReason {...requiredProps}/>);
-	expect(container.firstChild).toHaveClass('confess__reason-label');
+	expect(container.firstChild).toHaveClass('confess__reason');
 });

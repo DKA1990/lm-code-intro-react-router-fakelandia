@@ -1,9 +1,9 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { vi } from 'vitest';
 import ConfessDetails, { ConfessDetailsProps } from '../src/components/confess-details';
 
 const requiredProps : ConfessDetailsProps = {
-    details: "",
+    details: "Something",
     changeDetailsValue: vi.fn(),
     performValidation: (str: string) => { return str },
     setValid: vi.fn()
@@ -11,5 +11,12 @@ const requiredProps : ConfessDetailsProps = {
 
 test('renders form element', () => {	
     const { container } = render(<ConfessDetails {...requiredProps}/>);
-	expect(container.firstChild).toHaveClass('confess__details-text');
+	expect(container.firstChild).toHaveClass('confess__details');
 });
+
+test('contains correct value when given input', () => {
+    render(<ConfessDetails {...requiredProps}/>);
+    const detailsText = screen.getByDisplayValue('Something');
+    expect(detailsText).toBeInTheDocument();
+});
+

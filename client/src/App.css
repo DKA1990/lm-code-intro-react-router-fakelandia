@@ -60,8 +60,6 @@ body {
 }
 
 .main-container {
-  margin: 1rem;
-  border: 0.15rem solid black;
   display: flex;
   flex-grow: 1;
 }
@@ -69,6 +67,7 @@ body {
 .main {
   margin: 1rem;
   flex-grow: 1;
+  border: 0.15rem solid black;
 }
 
 .misdemeanour-container__headings{
@@ -93,22 +92,21 @@ body {
   margin-right: 0.5rem;
   border-right: 0.1rem solid black;
   width: 23%;
+  min-width: 100px;
 }
 
 .confess__form {
   display: flex;
   flex-direction: column;
+  margin: 0.5rem;
   border: 0.15rem solid black;
 }
 
-.confess__subject {
+.confess__element {
   margin: 0.5rem;
 }
 
-.confess__reason {
-  margin: 0.5rem;
-}
-
-.confess__details {
-  margin: 0.5rem;
+.confess__submit-button {
+  width: 20%;
+  min-width: 100px;
 }

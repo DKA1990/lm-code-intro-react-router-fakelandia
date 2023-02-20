@@ -80,7 +80,7 @@ const Confess: React.FC<ConfessProps> = ({ updateConfessions, updateMisdemeanour
                     setValid={setDetailsValid}
                 />
                 <button 
-                    className="confess__submit-button" 
+                    className="confess__element confess__submit-button" 
                     type="submit" 
                     id="submit"
                     disabled={buttonDisabled}>Confess                    
