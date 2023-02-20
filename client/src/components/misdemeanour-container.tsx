@@ -13,7 +13,6 @@ const MisdemeanoursContainer: React.FC<MisdemeanourContainerProps> = ({ misFilte
 
     // Optional type. If found filter, if not display all
     const createMisdemeanours = ( misFilter : MisdemeanourKind | "undefined") => {
-        console.log('bleh' , misdemeanours);
         let misdemeanourCardArr : Array<JSX.Element> = [];
 
         if (misFilter === "undefined") {
@@ -29,10 +28,14 @@ const MisdemeanoursContainer: React.FC<MisdemeanourContainerProps> = ({ misFilte
         return misdemeanourCardArr;
     }
 
-    console.log(misdemeanours);
-
     return (
         <div className="misdemeanour-container">
+            <div className="misdemeanour-container__headings">
+                <h3 className="misdemeanour-container__headings__heading">Citizen ID</h3>
+                <h3 className="misdemeanour-container__headings__heading">Date</h3>
+                <h3 className="misdemeanour-container__headings__heading">Misdemeanour</h3>
+                <h3 className="misdemeanour-container__headings__heading">Recommended Punishment</h3>
+            </div>
             {createMisdemeanours(misFilter)}
         </div>
     );

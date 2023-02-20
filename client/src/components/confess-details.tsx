@@ -13,7 +13,7 @@ const ConfessDetails : React.FC<ConfessDetailsProps> = ({ details, changeDetails
     const [ errorMessage, setErrorMessage ] = useState<string | undefined>();
 
     return (
-        <>
+        <div className="confess__details">
             <textarea 
                 className="confess__details-text"
                 id="details"
@@ -27,7 +27,7 @@ const ConfessDetails : React.FC<ConfessDetailsProps> = ({ details, changeDetails
                 >
             </textarea>
             <ErrorMessage errorText={errorMessage} />
-        </>
+        </div>
     )
 }
 

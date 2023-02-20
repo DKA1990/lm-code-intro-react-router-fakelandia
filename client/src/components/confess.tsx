@@ -56,7 +56,7 @@ const Confess: React.FC<ConfessProps> = ({ updateConfessions, updateMisdemeanour
                 confess to us directly.</p>
             <p>However, if you're just having a hard day and you need to vent then you're welcome to contact
                 us here too. Up to you!</p>
-            <form onSubmit={submitForm}>
+            <form className="confess__form" onSubmit={submitForm}>
                 <ConfessSubject 
                     subject={subject} 
                     changeSubjectValue={(event: any) => {

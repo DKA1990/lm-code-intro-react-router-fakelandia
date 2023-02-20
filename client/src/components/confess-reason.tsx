@@ -8,7 +8,7 @@ export interface ConfessReasonProps {
 const ConfessReason : React.FC<ConfessReasonProps> = ({ reason, changeReason }) => {
 
     return (
-        <>
+        <div className="confess__reason">
             <label className="confess__reason-label" htmlFor="reason">Reason for contact: </label>
                 <select 
                     className="confess__reason-select" 
@@ -22,7 +22,7 @@ const ConfessReason : React.FC<ConfessReasonProps> = ({ reason, changeReason }) 
                         <option value="united">Supporting Manchester United</option>
                         <option value="just-talk">Just want to Talk</option>
                 </select> 
-        </>
+        </div>
     )
 }
 

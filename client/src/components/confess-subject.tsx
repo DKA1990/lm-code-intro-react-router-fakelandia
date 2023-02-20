@@ -13,7 +13,7 @@ const ConfessSubject : React.FC<ConfessSubjectProps> = ({ subject, changeSubject
     const [ errorMessage, setErrorMessage ] = useState<string | undefined>();
 
     return (
-        <>
+        <div className="confess__subject">
             <label className="confess__subject-label" htmlFor="subject">Subject: </label> 
             <input 
                 className="confess__subject-text"
@@ -29,7 +29,7 @@ const ConfessSubject : React.FC<ConfessSubjectProps> = ({ subject, changeSubject
                 >
             </input>
             <ErrorMessage errorText={errorMessage} />
-        </>
+        </div>
     )
 }
 
