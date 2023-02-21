@@ -28,11 +28,9 @@ const App : React.FC = () => {
         <MisdemeanourContext.Provider value={misdemeanours}>
             <ConfessionContext.Provider value={confessions}>
                 <div className="App">
-                    <>
-                        <BrowserRouter>
-                            <Router updateConfessions={setConfessions} updateMisdemeanours={setMisdemeanours}/>
-                        </BrowserRouter>
-                    </>
+                    <BrowserRouter>
+                        <Router updateConfessions={setConfessions} updateMisdemeanours={setMisdemeanours}/>
+                    </BrowserRouter>
                 </div>
             </ConfessionContext.Provider>
         </MisdemeanourContext.Provider>

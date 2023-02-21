@@ -13,6 +13,7 @@ const ConfessReason : React.FC<ConfessReasonProps> = ({ reason, changeReason }) 
                 <select 
                     className="confess__reason-select" 
                     id="reason"
+                    aria-label="reason"
                     value={reason}
                     onChange={(e) =>  changeReason(e)}
                 >

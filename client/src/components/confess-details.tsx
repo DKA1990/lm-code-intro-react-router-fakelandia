@@ -17,6 +17,7 @@ const ConfessDetails : React.FC<ConfessDetailsProps> = ({ details, changeDetails
             <textarea 
                 className="confess__details-text"
                 id="details"
+                aria-label="details"
                 value={details}
                 onChange={(e) => {
                     const errorMessage = performValidation(e.target.value);

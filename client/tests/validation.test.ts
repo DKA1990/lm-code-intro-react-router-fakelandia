@@ -1,4 +1,4 @@
-import { validateDetails, validateSubject } from "./validation";
+import { validateDetails, validateSubject } from "../src/validation";
 
 describe('when given a string, validateSubject returns correct error message', () => {
     test('when given string "Valid", returns no error', () => {
