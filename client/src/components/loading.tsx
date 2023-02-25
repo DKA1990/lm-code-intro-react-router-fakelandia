@@ -1,7 +1,7 @@
 const Loading: React.FC = () => (
     <div className="loading">
         <img src="../../images/loading.gif" alt="Spinning circle"/>
-        <p>Loading...</p>
+        <p className="loading--text">Loading...</p>
     </div>
 );
 

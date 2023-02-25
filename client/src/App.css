@@ -132,6 +132,14 @@ body {
   color: red;
 }
 
+.loading {
+  margin: auto;
+}
+
+.loading--text {
+  text-align: center;
+}
+
 @media only screen and (min-width: 500px) {
   .App {
       font-size: 0.8rem;
