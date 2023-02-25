@@ -1,10 +1,9 @@
 import { render, screen } from '@testing-library/react';
-import App from '../src/App';
 import { test, expect } from 'vitest';
+import Home from '../src/components/home';
 
-// Renders app to avoid "useRoutes() may be used only in the context of a <Router> component" error
 test('renders form element', () => {	
-    render(<App/>);
+    render(<Home/>);
     const headerText = screen.getByText(/Welcome/g)
 	expect(headerText).toBeInTheDocument();
 });
