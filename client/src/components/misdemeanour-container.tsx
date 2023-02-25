@@ -16,8 +16,8 @@ const MisdemeanoursContainer: React.FC<MisdemeanourContainerProps> = ({ misFilte
         let misdemeanourCardArr : Array<JSX.Element> = [];
 
         if (misFilter === "undefined") {
-            misdemeanours.forEach(misdemeanour => {
-                misdemeanourCardArr.push(<MisdemeanourCard misdemeanour={misdemeanour}/>);
+            misdemeanours.forEach((misdemeanour, index) => {
+                misdemeanourCardArr.push(<MisdemeanourCard key={index} misdemeanour={misdemeanour}/>);
             })
         } else {
             misdemeanours.filter(misdemeanour => misdemeanour.misdemeanour === misFilter).forEach((misdemeanour, index) => {

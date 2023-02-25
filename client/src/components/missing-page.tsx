@@ -1,6 +1,6 @@
 const Missing: React.FC = () => (
     <section className="missing">
-        <p>404</p>
+        <p>Error 404 - Page does not exist :(</p>
     </section>
     
 );

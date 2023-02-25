@@ -8,6 +8,7 @@ html, #root, .App, body {
   display: flex;
   flex-direction: column;
   font-family: 'Didact Gothic';
+  font-size: 0.6rem;
 }
 
 a {
@@ -31,7 +32,7 @@ a {
 }
 
 .header__name__heading {
-  font-size: 1.5rem;
+  font-size: 1.5em;
 }
 
 .navigation-container {
@@ -47,7 +48,7 @@ a {
 .navigation-list__link {
   margin-right: 0.5rem;
   margin-left: 0.5rem;
-  font-size: 1.5rem;
+  font-size: 1.5em;
 }
 
 .active {
@@ -94,7 +95,7 @@ body {
   margin-right: 0.5rem;
   border-right: 0.1rem solid black;
   width: 23%;
-  min-width: 100px;
+  min-width: 50px;
 }
 
 .confess__form {
@@ -106,6 +107,20 @@ body {
 
 .confess__element {
   margin: 0.5rem;
+  width: 98%;
+}
+
+.confess__subject-text {
+  width: 60%;
+  min-width: 250px;
+  max-width: 400px;
+}
+
+.confess__details-text {
+  width: 60%;
+  height: 6rem;
+  min-width: 310px;
+  max-width: 460px;
 }
 
 .confess__submit-button {
@@ -115,4 +130,16 @@ body {
 
 .error-message {
   color: red;
+}
+
+@media only screen and (min-width: 500px) {
+  .App {
+      font-size: 0.8rem;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .App {
+      font-size: 1rem;
+  }
 }

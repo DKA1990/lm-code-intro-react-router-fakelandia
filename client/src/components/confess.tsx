@@ -40,7 +40,12 @@ const Confess: React.FC<ConfessProps> = ({ updateConfessions, updateMisdemeanour
             updateConfessions([...confessions, newConfession]);
             if (newConfession.reason !== "just-talk") { 
                 const today = new Date().toLocaleDateString();
-                updateMisdemeanours([...misdemeanours, {citizenId: 1, misdemeanour: newConfession.reason, date: `${today}`, punishment: `https://picsum.photos/100/100?${misdemeanours.length}`}]);
+                updateMisdemeanours([...misdemeanours, {
+                    citizenId: Math.floor(misdemeanours.length + (Math.random() * 37) * (Math.random() * 967)), 
+                    misdemeanour: newConfession.reason, 
+                    date: `${today}`, 
+                    punishment: `https://picsum.photos/100/100?${misdemeanours.length}`
+                }]);
             }
         }
     }
